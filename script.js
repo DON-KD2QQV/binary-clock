@@ -42,32 +42,35 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   async function getTimeFact() {
-    geminiButton.disabled = true;
-    geminiButton.textContent = 'Thinking...';
-    factContainer.innerHTML = '<div class="animate-pulse">Fetching a fact from the cosmos...</div>';
+  geminiButton.disabled = true;
+  geminiButton.textContent = 'Thinking...';
+  factContainer.innerHTML = '<div class="animate-pulse">Fetching a fact from the cosmos...</div>';
 
-    const { h, m } = currentTime;
-    const timeString = `${String(h).padStart(2, '0')}:${String(m).padStart(2, '0')}`;
-    const prompt = `Tell me a short, interesting, or historical fact related to the time ${timeString}.`;
+  const { h, m } = currentTime;
+  const timeString = `${String(h).padStart(2, '0')}:${String(m).padStart(2, '0')}`;
 
-    try {
-      const response = await fetch('timefact.php', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ prompt })
-      });
+  // Sample static fun facts per hour
+  const timeFacts = {
+    "00": "Midnight marks the beginning of a new day. 🌌",
+    "01": "1 AM — A quiet hour when most of the world sleeps. 💤",
+    "06": "6 AM — Sunrise and a fresh start for many! 🌅",
+    "12": "12 PM — Noon, when the sun is highest in the sky. ☀️",
+    "15": "3 PM — Did you know? In ancient Rome, 3 PM was teatime! 🍵",
+    "18": "6 PM — Time to wind down and relax. 🎧",
+    "21": "9 PM — The moon is usually high by now. 🌕",
+    "23": "Almost midnight — time flies! ⏳"
+  };
 
-      if (!response.ok) throw new Error(`Error: ${response.statusText}`);
-      const data = await response.json();
-      factContainer.textContent = data.fact || "No fact received.";
-    } catch (error) {
-      console.error(error);
-      factContainer.textContent = "Sorry, I couldn't fetch a fact.";
-    } finally {
-      geminiButton.disabled = false;
-      geminiButton.textContent = 'Get Time Fact ✨';
-    }
-  }
+  const hourKey = String(h).padStart(2, '0');
+  const fact = timeFacts[hourKey] || `The time is now ${timeString}. Enjoy the moment!`;
+
+  // Simulate API delay
+  await new Promise((resolve) => setTimeout(resolve, 1000));
+
+  factContainer.textContent = fact;
+  geminiButton.disabled = false;
+  geminiButton.textContent = 'Get Time Fact ✨';
+}
 
   createLights(hourColumn);
   createLights(minuteColumn);
