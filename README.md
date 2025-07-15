@@ -29,7 +29,7 @@ No backend or API key required — works fully on GitHub Pages
 🚀 Live Demo
 
 🔗 View Live on GitHub Pages
-   https://don-kd2qqv.github.io/binary-clock/
+   don-kd2qqv.github.io/binary-clock/
 
 📦 Getting Started (Dev Mode)
 
