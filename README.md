@@ -1,3 +1,6 @@
+[![Proof HTML](https://github.com/DON-KD2QQV/binary-clock/actions/workflows/proof-html.yml/badge.svg)](https://github.com/DON-KD2QQV/binary-clock/actions/workflows/proof-html.yml)
+[![pages-build-deployment](https://github.com/DON-KD2QQV/binary-clock/actions/workflows/pages/pages-build-deployment/badge.svg?branch=main)](https://github.com/DON-KD2QQV/binary-clock/actions/workflows/pages/pages-build-deployment)
+
 🕒 Binary Clock with Tailwind CSS + Time Facts
 
 A visual binary LED-style clock with a real-time digital display, animated UI using Tailwind CSS, and a fun "Time Fact" button — all built with pure HTML, CSS, and JavaScript.
